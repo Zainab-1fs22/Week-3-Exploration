@@ -1,0 +1,12 @@
+---- shell ----
+
+pip install -r requirements.txt (requests--Flask--oauthlib--pyOpenSSL--Flask-Login)
+pip list
+touch db.py
+touch schema.sql
+touch user.py 
+
+---- ref docs ----
+
+https://realpython.com/flask-google-login/
+
