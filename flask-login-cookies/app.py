@@ -30,15 +30,12 @@ GOOGLE_DISCOVERY_URL = (
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
 
-if __name__ == "__main__":
-    app.run(ssl_context="adhoc")
-
 # User session management setup
 # https://flask-login.readthedocs.io/en/latest
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-# Naive database setup
+#database setup
 try:
     init_db_command()
 except sqlite3.OperationalError:
@@ -52,9 +49,6 @@ client = WebApplicationClient(GOOGLE_CLIENT_ID)
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
-
-def get_google_provider_cfg():
-    return requests.get(GOOGLE_DISCOVERY_URL).json()
 
 @app.route("/")
 def index():
@@ -150,3 +144,12 @@ def callback():
 def logout():
     logout_user()
     return redirect(url_for("index"))
+
+
+
+def get_google_provider_cfg():
+    return requests.get(GOOGLE_DISCOVERY_URL).json()
+
+
+if __name__ == "__main__":
+    app.run(ssl_context="adhoc")

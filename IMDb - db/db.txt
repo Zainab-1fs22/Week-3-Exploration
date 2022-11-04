@@ -1,0 +1,57 @@
+CREATE table Movie(movieid int, title text, storyline text, production_yr int,  is_inTheatres bool, is_comingSoon bool, movieImdbRating float,  moviePictureRating text, primary key (movieid));
+insert into Movie values(1, "Wonder Woman", "Diana, an Amazonian warrior in training, discovering her full powers and true destiny.", 2017, True, False, 7.4, "PG-13");
+
+UPDATE Movie SET storyline = "Diana, an Amazonian warrior in training, discovering her full powers and true destiny." where movieid=1;
+
+CREATE table Movie_Reviews(int movieid, int userReviews_id);
+insert into Movie_Reviews values(1, 1);
+
+CREATE table Movie_Language(int movieid, int language_id);
+insert into Movie_Language values(1, 1);
+
+CREATE table Movie_News(int movieid, int news_id);
+insert into Movie_News values(1, 1);
+
+CREATE table Movie_Awards(int movieid, int awards_id);
+insert into Movie_Awards values(1, 1);
+
+CREATE table Movie_Videos(int movieid, int videos_id);
+insert into Movie_Videos values(1, 1);
+
+CREATE table Movie_genre(int movieid, int genre_id);
+insert into Movie_genre values(1, 1);
+
+CREATE table Movie_Cast(int movieid, int cast_id, int role_id);
+insert into Movie_Cast values(1, 1);
+
+CREATE table Movie_Production(int movieid, int company_id);
+insert into Movie_Production values(1, 1);
+
+
+CREATE table User_Reviews(int userReviews_id primary key, int movie_id, varchar(20) date, varchar(100) text, float yourImdbRating_id);
+insert into User_Reviews values(1, 1, "4 Nov 2018", "Excellent Movie", 9.3 );
+
+CREATE table Language(int language_id primary key, varchar(100) name)
+insert into Language values(1, "English");
+
+CREATE table News(int news_id primary key, varchar(100) headline, varchar(100) text);
+insert into News values(1, "DC seems to be releasing their new movie soon");
+
+CREATE table Awards(int awards_id primary key, varchar(100) name);
+insert into Awards values(1, "MTV Movie & TV Award for Best Fight
+");
+
+CREATE table Videos(int videos_id primary key, varchar(100) video);
+insert into Videos values(1, "https://youtu.be/1Q8fG0TtVAY");
+
+CREATE table Genre(int genre_id primary key, varchar(100) name);
+insert into Genre values(1, "Action, Adventure, Fantasy, Sci-fi, War");
+
+CREATE table Cast(int cast_id primary key, varchar(100) name, varchar(20) gender, varchar(100) movies, varchar(100)roles, int imdbRating_id, varchar(20) height, int age);
+insert into Cast values(1, "Gal Gadot", "Female", "Wonder Woman, Death on the Nile, Red Notice", "Actress, Producer, Soundtrack", 1, "5' 10" (1.78 m)", 37);
+
+CREATE table Role(int role_id primary key, varchar(100) name);
+insert into Role values(1, "Actress");
+
+CREATE table Production(int production_id primary key, varchar(100) name);
+insert into Production values(1, "Warner Bros. Pictures DC Films Atlas Entertainment Cruel and Unusual Films");
